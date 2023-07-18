@@ -1,25 +1,28 @@
 from sense_hat import SenseHat
-from time import sleep
 
 sense = SenseHat()
 
-w = (150, 150, 150)
-b = (0, 0, 255)
-e = (0, 0, 0)
-
-image = [
-e,e,e,e,e,e,e,e,
-e,e,e,e,e,e,e,e,
-w,w,w,e,e,w,w,w,
-w,w,b,e,e,w,w,b,
-w,w,w,e,e,w,w,w,
-e,e,e,e,e,e,e,e,
-e,e,e,e,e,e,e,e,
-e,e,e,e,e,e,e,e
-]
-
-sense.set_pixels(image)
+# Display the letter J
+sense.show_letter("E")
 
 while True:
-    sleep(1)
-    sense.flip_h()
+	acceleration = sense.get_accelerometer_raw()
+	x = acceleration['x']
+	y = acceleration['y']
+	z = acceleration['z']
+
+	x=round(x, 0)
+	y=round(y, 0)
+	z=round(z, 0)
+	
+	print("x={0}, y={1}, z={2}".format(x, y, z))
+
+  # Update the rotation of the display depending on which way up the Sense HAT is
+	if x  == -1:
+	  sense.set_rotation(180)
+	elif y == 1:
+	  sense.set_rotation(90)
+	elif y == -1:
+	  sense.set_rotation(270)
+	else:
+	  sense.set_rotation(0)
