@@ -5,10 +5,11 @@ from time import sleep
 
 sense = SenseHat()
 
+pixels = [0,0,0] * 64
 
-def pushed_down(event):
-    if event.action == ACTION_RELEASED:
-        print("Hey")
+while True:
 
-sense.stick.direction_any = pushed_down
-
+    sense.set_pixels(pixels)
+    for i in range(64):
+        pixels[i] = [pixels[i][0] + 1, pixels[i][1] + 1, pixels[i][2] + 1]
+    sleep(0.1)
