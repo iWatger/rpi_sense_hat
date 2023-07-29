@@ -12,4 +12,4 @@ while True:
     sense.set_pixels(pixels)
     for i in range(64):
         pixels[i] = [pixels[i][0] + 1, pixels[i][1] + 1, pixels[i][2] + 1]
-    sleep(0.1)
+    sleep(0.01)
