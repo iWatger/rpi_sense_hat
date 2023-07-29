@@ -5,7 +5,7 @@ from time import sleep
 
 sense = SenseHat()
 
-pixels = [0,0,0] * 64
+pixels = [[0,0,0]] * 64
 
 while True:
 
